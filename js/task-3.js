@@ -1,33 +1,14 @@
-class StringBuilder {
-  #value;
+const inputNameElem = document.querySelector("#name-input");
+inputNameElem.addEventListener("input", handleInputNameElemEvent);
 
-  constructor(initialValue) {
-    this.#value = initialValue;
-  }
+const outputNameElem = document.querySelector("#name-output");
 
-  getValue() {
-    return this.#value;
-  }
+function handleInputNameElemEvent(e) {
+  const name = e.target.value.trim();
 
-  padEnd(str) {
-    this.#value += str;
-  }
-
-  padStart(str) {
-    this.#value = str + this.#value;
-  }
-
-  padBoth(str) {
-    this.#value = str + this.#value + str;
+  if (name) {
+    outputNameElem.textContent = name;
+  } else {
+    outputNameElem.textContent = "Anonymous";
   }
 }
-
-// Код для перевірки (не змінювати)
-const builder = new StringBuilder(".");
-console.log(builder.getValue()); // "."
-builder.padStart("^");
-console.log(builder.getValue()); // "^."
-builder.padEnd("^");
-console.log(builder.getValue()); // "^.^"
-builder.padBoth("=");
-console.log(builder.getValue()); // "=^.^="
