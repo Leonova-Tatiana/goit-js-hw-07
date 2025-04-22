@@ -1,21 +1,23 @@
-const formEl = document.querySelector(".js-form");
+const form = document.querySelector(".login-form");
 
-formEl.addEventListener("submit", (e) => {
-  e.preventDefault();
+form.addEventListener("submit", (event) => {
+  event.preventDefault();
 
-  const email = formEl.elements.email.value.trim();
-  const password = formEl.elements.password.value.trim();
+  const { email, password } = form.elements;
 
-  // Перевірка заповнених полів
-  if (email === "" || password === "") {
+  const emailValue = email.value.trim();
+  const passwordValue = password.value.trim();
+
+  if (emailValue === "" || passwordValue === "") {
     alert("All form fields must be filled in");
     return;
   }
 
-  // Створення обʼєкту
-  const userData = { email, password };
-  console.log(userData);
+  const formData = {
+    email: emailValue,
+    password: passwordValue,
+  };
 
-  // Очищення полів
-  e.target.reset();
+  console.log(formData);
+  form.reset();
 });
